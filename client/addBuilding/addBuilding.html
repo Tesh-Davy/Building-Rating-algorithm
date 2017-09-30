@@ -1,0 +1,268 @@
+<template name="addBuildings">
+    <div class="row">
+        <div class="twelve column">
+            <h1>Add a building</h1>
+        </div>
+
+        {{#autoForm collection="Buildings" id="addBuildingForm" type="insert" class="new-building-form" validation="blur"}}
+        <div class="row">
+            <div class="twelve columns">
+                <p>Fill this form on the specifics of the building so as to allow viewers identify the grade of the building.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="twelve columns">
+                {{> afQuickField name='name' class="u-full-width"}}
+                {{> afQuickField name='image' class="u-full-width"}}
+            </div>
+            <div class="twelve columns">
+                {{> afQuickField name='location' class="u-full-width"}}
+                {{> afQuickField name='rating' id="rating" class="rating"}}
+                {{> afQuickField name='floors' class="u-full-width floors"}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                {{> afQuickField name='certificateOccupation' class="u-full-width occupation"}}
+            </div>
+        </div>
+        {{> wetlandTemplate}}
+        {{> steelGradeTemplate}}
+        {{> wallingGradeTemplate}}
+        {{> concreteGradeTemplate}}
+        {{> loadBearingWallsTemplate}}
+        {{> nonLoadBearingWallsTemplate}}
+        {{> waterRatioTemplate}}
+        {{> expansionJointsTemplate}}
+        <button class="button-primary" type="submit">Submit</button>
+        {{/autoForm}}
+    </div>
+    <div class="compiled-rating">
+        {{> starRating}}
+    </div>
+</template>
+
+
+
+<template name="wetlandTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Land Viscosity:</h4>
+            <span>Select the various aspects of the land on which the building has been constructed.</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='wetlands.foundation' class="u-full-width foundation"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='wetlands.foundationBase' class="u-full-width foundation-base"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='wetlands.stripType' class="u-full-width strip-type"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='wetlands.ringBeamType' class="u-full-width ring-beam"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='wetlands.dewateringType' class="u-full-width dewatering-type"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='wetlands.sandType' class="u-full-width sand-type"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='wetlands.floorSlabType' class="u-full-width floor-slab-type"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='wetlands.linktelsType' class="u-full-width linkels-type"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <p>Select any of the aspects of the land below as they apply.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            {{> afQuickField name='wetlands.ironWallHoops' class="u-full-width iron-wall-hoops"}}
+        </div>
+        <div class="twelve columns">
+            {{> afQuickField name='wetlands.waterproofCement' class="u-full-width waterproof-cement"}}
+        </div>
+        <div class="twelve columns">
+            {{> afQuickField name='wetlands.curedWater' class="u-full-width cured-water"}}
+        </div>
+        <div class="twelve columns">
+            {{> afQuickField name='wetlands.dumpSite' class="u-full-width dump-site"}}
+        </div>
+    </div>
+</template>
+
+
+<template name="steelGradeTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Steel Grade:</h4>
+            <span>Choose the grades of the steel used throughout the building.</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='steelGrade.foundationSteelGrade' class="u-full-width foundation-steel-grade"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='steelGrade.columnsSteelGrade' class="u-full-width column-steel-grade"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='steelGrade.slabSteelGrade' class="u-full-width slab-steel-grade"}}
+        </div>
+    </div>
+</template>
+
+
+<template name="wallingGradeTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Walling grade:</h4>
+            <span>Choose the grades of the materials used to create the walls of the building.</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='wallingGrade.stoneType' class="u-full-width stone-type"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='wallingGrade.mortarBonds' class="u-full-width mortar-bonds"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='wallingGrade.ironHoops' class="u-full-width iron-hoops"}}
+        </div>
+    </div>
+</template>
+
+
+<template name="concreteGradeTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Concrete grade:</h4>
+            <span>Choose the grades of the concrete applications in the entire building</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='concreteGrade.foundation' class="u-full-width concrete-grade-foundation"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='concreteGrade.groundBeam' class="u-full-width concrete-grade-ground-beam"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='concreteGrade.slab' class="u-full-width concrete-grade-slab"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='concreteGrade.water' class="u-full-width  concrete-grade-water"}}
+        </div>
+    </div>
+</template>
+
+
+<template name="loadBearingWallsTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Load bearing walls:</h4>
+            <span>what structure does the walls bearing the building's load have?</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='loadBearingWalls.wallBaseThickness' class="u-full-width wall-base-thickness"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='loadBearingWalls.wallBaseWeight' class="u-full-width wall-base-weight"}}
+        </div>
+    </div>
+</template>
+
+
+<template name="nonLoadBearingWallsTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Non-load bearing walls:</h4>
+            <span>what framing does the walls which do not bear the building's load have?</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='nonLoadBearingWalls.rcBeams' class="u-full-width rc-beams"}}
+        </div>
+        <div class="six columns">
+            {{> afQuickField name='nonLoadBearingWalls.rcColumns' class="u-full-width rc-columns"}}
+        </div>
+    </div>
+</template>
+
+
+<template name="structuralSteelTablesTemplate">
+
+</template>
+
+
+<template name="waterRatioTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Water to cement ratio</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='waterRatio.waterRatio' class="u-full-width water-ratio"}}
+        </div>
+    </div>
+</template>
+
+
+<template name="expansionJointsTemplate">
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            <h4>Expansion joints</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            {{> afQuickField name='expansionJoints.expansionJoints' class="u-full-width expansion-joints"}}
+        </div>
+    </div>
+</template>
+
+<template name="starRating">
+    <div class="rating left">
+        <div class="stars right">
+            <a class="star one-star rated"></a>
+            <a class="star two-star"></a>
+            <a class="star three-star"></a>
+            <a class="star four-star"></a>
+            <a class="star five-star"></a>
+        </div>
+    </div>
+</template>

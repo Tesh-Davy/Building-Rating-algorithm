@@ -1,0 +1,170 @@
+body {
+    background: #fefefe;
+    .header{
+        background: #708090;
+        padding:1em 0;
+        width: 100%;
+        height:auto;
+        position: fixed;
+        top:0;
+        left:0;
+        z-index:2;
+        h4, a{
+            color:white;
+            margin-bottom:0;
+            padding-bottom:0;
+        }
+        a.active{
+            color: #708090;
+            background: white;
+            border: 1px solid white;
+        }
+        .menu{
+            text-align: right;
+        }
+    }
+    .content{
+        margin: 8em auto 5em;
+        .compiled-rating{
+            background:#708090;
+            padding:.7em 1.5em;
+            width: auto;
+            position: fixed;
+            right:2em;
+            bottom: 2em;
+            border-radius: 1em;
+            .rating{
+                .stars {
+                    .star {
+                        float: left;
+                        padding: 5px;
+                    }
+                    .star:before {
+                        font-family: 'FontAwesome';
+                        content: '\f005';
+                        color: #d0e8f0;
+                        font-size: 1.5em;
+                    }
+                    .star.rated:before {
+                        color: #ffb100;
+                    }
+                }
+            }
+
+        }
+        h1, h2, h3, .detail-rating{
+            color:#708090;
+        }
+    }
+    .help-block{
+        color:#cd0000;
+        font-size: .7em;
+        top: -2rem;
+        position: relative;
+    }
+    table, .header-rating{
+        .rating{
+            .stars {
+                .star {
+                    float: left;
+                    padding: 0 5px;
+                }
+                .star:before {
+                    font-family: 'FontAwesome';
+                    content: '\f005';
+                    color: #eee;
+                    font-size: 1em;
+                }
+                .star.rated:before {
+                    color: #ffb100;
+                }
+            }
+            .rate1{
+                .star.one:before {
+                    color: #ffb100;
+                }
+            }
+            .rate2{
+                .star.one:before, .star.two:before {
+                    color: #ffb100;
+                }
+            }
+            .rate3{
+                .star.one:before, .star.two:before, .star.three:before {
+                    color: #ffb100;
+                }
+            }
+            .rate4{
+                .star.one:before, .star.two:before, .star.three:before, .star.four:before {
+                    color: #ffb100;
+                }
+            }
+            .rate5{
+                .star.one:before, .star.two:before, .star.three:before, .star.four:before, .star.five:before {
+                    color: #ffb100;
+                }
+            }
+        }
+    }
+
+    .location{
+        .map{
+            height:300px;
+        }
+    }
+
+    .building-image{
+        height:600px;
+        background-size: cover;
+        border-radius: 10px;
+    }
+    .building-preview{
+        height: 70px;
+        width: 100px;
+        background: #ccc;
+        background-size: cover;
+        border-radius: 5px;
+        text-align: center;
+        display: table;
+        box-sizing: border-box;
+        color: #fff;
+        span{
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .building-name{
+        color:#708090;
+        font-size: 1.2em;
+    }
+    .building-reg{
+        color:#555;
+        font-size:.9em;
+    }
+    .building-data{
+        table{
+            tr{
+                td{
+                    padding:0;
+                    h5{
+                        margin: 1em 0 .2em;
+                    }
+                }
+                td.no-border{
+                    border-bottom:0;
+                    padding-left:1.5em;
+                }
+
+            }
+        }
+    }
+    .delete-building{
+        background: #cd0000;
+        color:white;
+        margin-top: 3em;
+        border: 0;
+        &:hover{
+            background: black;
+        }
+    }
+}

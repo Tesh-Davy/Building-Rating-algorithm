@@ -1,0 +1,178 @@
+<template name="showBuildingDetail">
+    <div class="row header-data">
+        <div class="eight columns">
+            <h3>{{building.name}}</h3>
+        </div>
+        <div class="four columns header-rating">
+            <div class="rating">
+                <div class="stars rate{{building.rating}}">
+                    <span class="detail-rating">: {{building.rating}}</span> / 5
+                    <a class="star one"></a>
+                    <a class="star two"></a>
+                    <a class="star three"></a>
+                    <a class="star four"></a>
+                    <a class="star five"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="eight columns">
+            {{#if building.certificateOccupation}}
+                <p style="color: green">Certificate of occupation issued. </p>
+            {{else}}
+                <p style="color: red">NO certificate of occupation issued. </p>
+            {{/if}}
+        </div>
+        <div class="four columns">
+            <p style="color: green"><b>{{building.floors}} </b> Floors.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            {{#with FS.GetFile "buildingImages" building.image}}
+	            <div class="building-image" style="background-image: url({{url}});"></div>
+	        {{/with}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns building-data">
+        <table class="u-full-width">
+            <tbody>
+                <tr><td><h5>Land Viscosity</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{wetlandsfoundation}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wetlandsfoundationBase}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wetlandsstripType}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wetlandsringBeamType}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wetlandsdewateringType}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wetlandssandType}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wetlandsfloorSlabType}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wetlandslinktelsType}}</td>
+                </tr>
+                {{#if building.wetlands.ironWallHoops}}
+                <tr>
+                    <td class="no-border">
+                        Hoop iron in the walls
+                    </td>
+                </tr>
+                {{/if}}
+                {{#if building.wetlands.waterproofCement}}
+                <tr>
+                    <td class="no-border">
+                        Waterproof cement was used
+                    </td>
+                </tr>
+                {{/if}}
+                {{#if building.wetlands.curedWater}}
+                <tr>
+                    <td class="no-border">
+                        2000PSI of water was used in the concrete and cured in 21days
+                    </td>
+                </tr>
+                {{/if}}
+                {{#if building.wetlands.dumpSite}}
+                <tr>
+                    <td class="no-border">
+                        The building was constructed on a dumpsite
+                    </td>
+                </tr>
+                {{/if}}
+                <tr><td><h5>Steel Grade</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{steelGradefoundationSteelGrade}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{steelGradecolumnsSteelGrade}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{steelGradeslabSteelGrade}}</td>
+                </tr>
+                <tr><td><h5>Walling Grade</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{wallingGradestoneType}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wallingGrademortarBonds}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{wallingGradeironHoops}}</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="six columns building-data">
+            <table class="u-full-width">
+                <tbody>
+                <tr><td><h5>Concrete Grade</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{concreteGradefoundation}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{concreteGradegroundBeam}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{concreteGradeslab}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{concreteGradewater}}</td>
+                </tr>
+                <tr><td><h5>Load-bearing walls</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{loadBearingWallswallBaseThickness}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{loadBearingWallswallBaseWeight}}</td>
+                </tr>
+                <tr><td><h5>Non load-bearing walls</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{nonLoadBearingWallsrcBeams}}</td>
+                </tr>
+                <tr>
+                    <td class="no-border">{{nonLoadBearingWallsrcColumns}}</td>
+                </tr>
+                <tr><td><h5>Water ratio</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{waterRatiowaterRatio}}</td>
+                </tr>
+                <tr><td><h5>Expansion joints</h5></td></tr>
+                <tr>
+                    <td class="no-border">{{expansionJointsexpansionJoints}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <p></p>
+            <p></p>
+            <h3>location</h3>
+            <p>the location of {{building.name}} represented on a map</p>
+            <div class="location">
+				<div class="map">
+					{{> googleMap name="buildingLocation" options=showBuildingMap}}
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <button class="delete-building">Delete this building</button>
+        </div>
+    </div>
+</template>

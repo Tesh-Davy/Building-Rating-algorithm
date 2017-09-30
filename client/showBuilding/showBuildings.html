@@ -1,0 +1,67 @@
+<template name="showBuildings">
+    <div class="row">
+        <div class="twlve columns">
+            <input type="text" name="search" class="u-full-width searchbox" placeholder="Find a building by Name/Reg No... Click enter to search">
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve column">
+            <table class="u-full-width">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Building Name</th>
+                        <th>Rating</th>
+                        <th>View Details</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if searching}}
+                        <tr>
+                            <td colspan="4"><h1>loading...</h1></td>
+                        </tr>
+                    {{else}}
+                        {{#each buildings}}
+                            <tr>
+                                <td>
+                                    {{#with FS.GetFile "buildingImages" image}}
+                        	            <div class="building-preview" style="background-image: url({{url}});"></div>
+                                    {{else}}
+                                        <div class="building-preview">
+                                            <span>
+                                                No image
+                                            </span>
+                                        </div>
+                        	        {{/with}}
+                                </td>
+                                <td>
+                                    <span class="building-name">{{name}}</span><br />
+                                    <span class="building-reg"><strong>NCA Reg. No: </strong>{{_id}}</span>
+                                </td>
+                                <td>
+                                    <div class="rating">
+                                        <div class="stars rate{{rating}}">
+                                            <a class="star one"></a>
+                                            <a class="star two"></a>
+                                            <a class="star three"></a>
+                                            <a class="star four"></a>
+                                            <a class="star five"></a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="/building/{{_id}}" class="button button-primary">view</a>
+                                </td>
+                            </tr>
+    					{{else}}
+                        <tr>
+                            <td colspan="4"><h1>No buildings found</h1></td>
+                        </tr>
+    					{{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
